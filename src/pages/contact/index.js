@@ -1,6 +1,11 @@
 import React from 'react'
 import { navigate } from 'gatsby-link'
 import Layout from '../../components/Layout'
+import ReCAPTCHA from "react-google-recaptcha";
+
+
+const recaptchaRef = React.createRef();
+const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY;
 
 function encode(data) {
   return Object.keys(data)
@@ -16,6 +21,10 @@ export default class Index extends React.Component {
 
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value })
+  }
+
+  handleRecaptcha = value => {
+    this.setState({ "g-recaptcha-response": value })
   }
 
   handleSubmit = e => {
@@ -99,6 +108,13 @@ export default class Index extends React.Component {
                       required={true}
                     />
                   </div>
+                </div>
+                <div className="field">
+                  <ReCAPTCHA
+                    ref={recaptchaRef}
+                    sitekey={RECAPTCHA_KEY}
+                    onChange={this.handleRecaptcha}
+                  />
                 </div>
                 <div className="field">
                   <button className="button is-link" type="submit">
