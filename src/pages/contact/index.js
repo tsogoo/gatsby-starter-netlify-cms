@@ -112,7 +112,7 @@ export default class Index extends React.Component {
                 </div>
                 <div className="field">
                   <ReCAPTCHA
-                    ref={recaptchaRef}
+                    ref="recaptcha"
                     sitekey={RECAPTCHA_KEY}
                     onChange={this.handleRecaptcha}
                   />
