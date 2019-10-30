@@ -5,7 +5,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 
 
 const recaptchaRef = React.createRef();
-const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY;
+const RECAPTCHA_KEY = "6LeMOMAUAAAAAEzyDRl6JyFwZ1lgOzj9DBgZ_Z_w" //process.env.SITE_RECAPTCHA_KEY;
 
 function encode(data) {
   return Object.keys(data)
@@ -54,6 +54,7 @@ export default class Index extends React.Component {
                 method="post"
                 action="/contact/thanks/"
                 data-netlify="true"
+                data-netlify-recaptcha="true"
                 data-netlify-honeypot="bot-field"
                 onSubmit={this.handleSubmit}
               >
